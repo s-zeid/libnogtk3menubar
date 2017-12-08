@@ -39,6 +39,8 @@
 
 
 GtkWidget* find_child_of_type(GtkWidget* widget, const char *type_name) {
+ // Adapted from <https://stackoverflow.com/a/23497087> by Darius Kucinskas
+ 
  if (g_ascii_strcasecmp(G_OBJECT_TYPE_NAME(widget), (gchar*)type_name) == 0)
   return widget;
  
