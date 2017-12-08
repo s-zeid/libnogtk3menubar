@@ -11,7 +11,7 @@ Usage
 -----
 
 Simply build libnogtk3menubar (see below) and set the `LD_PRELOAD` environment
-variable to the path to the compiled library.  Then run your program as follows:
+variable to the path to the compiled library when running your program:
 
     LD_PRELOAD=path/to/libnogtk3menubar[32].so <GTK+ 3 program> [arguments [...]]
 
