@@ -1,11 +1,11 @@
-The `generate` script in this directory generates helper scripts to run
+The `_generate` script in this directory generates helper scripts to run
 QEMU systems using libnogtk3menubar.
 
 
 Usage
 -----
 
-1.  Run the `generate` script.
+1.  Run the `_generate` script.
 
 2.  Add the `qemu` directory to your `$PATH`.
 
