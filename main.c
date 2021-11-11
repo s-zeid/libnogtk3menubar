@@ -1,7 +1,7 @@
 /* libnogtk3menubar
  * An LD_PRELOAD hack to hide the menu bar in GTK+ 3 apps.
  * 
- * Copyright (C) 2015, 2017 Scott Zeid.
+ * Copyright (C) 2015, 2017, 2021 S. Zeid.
  * https://code.s.zeid.me/libnogtk3menubar
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -73,6 +73,20 @@ void gtk_widget_show(GtkWidget *widget) {
 }
 
 
+void (*next_gtk_widget_show_all)(GtkWidget *widget)
+ = NULL;
+
+void gtk_widget_show_all(GtkWidget *widget) {
+ if (GTK_IS_MENU_BAR(widget))
+  return;
+ next_gtk_widget_show_all(widget);
+ GtkWidget *menubar = find_child_of_type(gtk_widget_get_toplevel(widget), "GtkMenuBar");
+ if (menubar != NULL)
+  gtk_widget_hide(menubar);
+}
+
+
 void _init(void) {
  next_gtk_widget_show = dlsym(RTLD_NEXT, "gtk_widget_show");
+ next_gtk_widget_show_all = dlsym(RTLD_NEXT, "gtk_widget_show_all");
 }
