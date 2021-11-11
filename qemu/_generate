@@ -44,14 +44,14 @@ dir=`dirname "$0"`/..; dir=`cd "$dir" && pwd`
 next() {
  local what="$1"
  
- local real_script="$(readlink -m "$0")"
+ local real_script="$(readlink -f "$0")"
  
  local oifs
  oifs=$IFS
  IFS="
 "
  for i in $(which -a "$what" 2>/dev/null); do
-  local real_i="$(readlink -m "$i")"
+  local real_i="$(readlink -f "$i")"
   if [ x"$real_i" != x"$real_script" ]; then
    printf '%s' "$i"
    break
