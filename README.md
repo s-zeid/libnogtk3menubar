@@ -3,7 +3,7 @@ libnogtk3menubar
 
 An LD\_PRELOAD hack to hide the menu bar in GTK+ 3 apps.
 
-Copyright (C) 2015, 2017 Scott Zeid.  Released under the X11 License.  
+Copyright (C) 2015, 2017, 2021 S. Zeid.  Released under the X11 License.  
 <https://code.s.zeid.me/libnogtk3menubar>
 
 
@@ -24,10 +24,11 @@ itself is located for the library:
 Building
 --------
 
-1.  Make sure you're on GNU/Linux (yes, the GNU part matters here) and have
-    the glibc and GTK+ 3 development packages installed, as well as GNU Make
-    and pkg-config.
+1.  Have the libc, GLib, and GTK+ 3 development packages installed, as well as
+    GNU Make and pkg-config.
     
-        fedora$ sudo yum install glibc-devel gtk3-devel make pkgconfig
+        debian$ sudo apt install libc6-dev libglib2.0-dev libgtk-3-dev make pkg-config
+        fedora$ sudo dnf install glibc-devel glib2-devel gtk3-devel make pkgconfig
+        alpine$ sudo apk add musl-dev glib-dev gtk+3.0-dev make pkgconf
 
 2.  In the repository's root directory, run `make`.
