@@ -23,9 +23,11 @@ _get_qemu_systems_inner() {
  IFS=:
  
  for i in $PATH; do
-  IFS=$OIFS
-   find "$i" -name 'qemu-system-*' -exec basename -- {} \;
-  IFS=:
+  if [ -d "$i" ]; then
+   IFS=$OIFS
+    find "$i" -name 'qemu-system-*' -exec basename -- {} \;
+   IFS=:
+  fi
  done
  
  IFS=$OIFS
